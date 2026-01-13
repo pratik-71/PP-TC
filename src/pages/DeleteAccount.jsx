@@ -24,12 +24,13 @@ const DeleteAccount = () => {
     // Construct email body
     const recipients = "pratikdabhade66344@gmail.com";
     const subject = `Deletion Request: ${formData.project}`;
-    const body = `PROJECT: ${formData.project}
-USERNAME: ${formData.username}
-EMAIL: ${formData.email}
-REASON: ${formData.reason}
+    const body = `${formData.reason}
 
-Please confirm deletion.`;
+----------------------------------------------------------------
+Request Details:
+Project: ${formData.project}
+Username: ${formData.username}
+Email: ${formData.email}`;
 
     window.location.href = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
