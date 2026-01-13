@@ -6,47 +6,52 @@ export default function TermsConditions() {
     const navigate = useNavigate();
 
     const Section = ({ title, children }) => (
-        <div className="mb-12">
-            <h2 className="text-xl font-semibold mb-4 text-white hover:text-gray-200 transition-colors">
+        <div className="mb-10">
+            <h2 className="text-xl font-semibold mb-4 text-white hover:text-blue-200 transition-colors">
                 {title}
             </h2>
-            <div className="text-base leading-8 text-neutral-400 font-light space-y-4">
+            <div className="text-base leading-8 text-gray-400 font-light space-y-4">
                 {children}
             </div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-black text-white font-sans selection:bg-white/20 selection:text-white">
+        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-purple-500/30 relative">
             
-            {/* Navigation Header */}
-            <div className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-                <div className="mx-auto flex h-20 max-w-3xl items-center px-6">
-                    <button 
-                        onClick={() => navigate('/')}
-                        className="group flex items-center gap-2 rounded-full px-4 py-2 hover:bg-white/5 transition-all duration-300"
-                    >
-                        <ArrowLeft className="h-5 w-5 text-neutral-400 group-hover:text-white transition-colors" />
-                        <span className="text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">Back</span>
-                    </button>
-                    <span className="ml-4 text-sm font-medium text-neutral-600">|</span>
-                    <span className="ml-4 text-sm font-semibold text-white tracking-wide">Memories</span>
-                </div>
+            {/* Fixed Cosmos Background */}
+            <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
+                <div className="absolute top-[-20%] left-[-10%] h-[800px] w-[800px] rounded-full bg-purple-900/10 blur-[120px] mix-blend-screen" />
+                <div className="absolute bottom-[-20%] right-[-10%] h-[800px] w-[800px] rounded-full bg-indigo-900/10 blur-[120px] mix-blend-screen" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-900/5 blur-[100px] mix-blend-screen" />
             </div>
 
-            {/* Main Content */}
-            <div className="mx-auto max-w-3xl px-6 pt-32 pb-24">
+            {/* Main Content Container - No Fixed Headers */}
+            <div className="relative z-10 mx-auto max-w-3xl px-6 py-12">
                 
+                {/* Navigation */}
+                <div className="mb-12 flex items-center justify-between">
+                    <button 
+                        onClick={() => navigate('/')}
+                        className="group flex items-center gap-2 rounded-full bg-white/5 pr-5 pl-4 py-2.5 hover:bg-white/10 transition-all border border-white/5 active:scale-95"
+                    >
+                        <ArrowLeft className="h-4 w-4 text-neutral-400 group-hover:text-white transition-colors" />
+                        <span className="text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">Back</span>
+                    </button>
+                    <span className="text-sm font-medium text-neutral-600 tracking-widest uppercase">Memories App</span>
+                </div>
+
                 {/* Title Section */}
-                <div className="mb-16 border-b border-white/10 pb-10">
-                    <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent mb-6">
+                <div className="mb-16 border-b border-white/10 pb-8">
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
                         Terms & Conditions
                     </h1>
-                    <p className="text-neutral-500 text-sm tracking-wide uppercase font-medium">
+                    <p className="text-blue-400 text-sm tracking-wide uppercase font-medium">
                         Last Updated: January 13, 2026
                     </p>
                 </div>
 
+                {/* Content */}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                     <Section title="1. Agreement to Terms">
                         <p>By downloading, accessing, or using the Memories application, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use the application.</p>
@@ -58,12 +63,12 @@ export default function TermsConditions() {
 
                     <Section title="3. User Content and Conduct">
                         <div className="space-y-4">
-                            <div>
-                                <span className="font-bold text-white block mb-1">Ownership:</span>
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/5">
+                                <span className="font-bold text-white block mb-2 text-sm uppercase tracking-wide opacity-80">Ownership</span>
                                 <span>You retain all rights to the photos, videos, and text ("Content") you upload. By uploading content, you grant Memories a license to store and display this content solely for the purpose of providing the service to you.</span>
                             </div>
-                            <div>
-                                <span className="font-bold text-white block mb-1">Prohibited Conduct:</span>
+                            <div className="p-4 rounded-xl bg-white/5 border border-white/5">
+                                <span className="font-bold text-white block mb-2 text-sm uppercase tracking-wide opacity-80">Prohibited Conduct</span>
                                 <span>You agree not to upload any content that is illegal, offensive, pornographic, violent, or violates the rights of others. We reserve the right to remove any content or terminate accounts that violate these guidelines.</span>
                             </div>
                         </div>
