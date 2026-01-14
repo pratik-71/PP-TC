@@ -92,18 +92,25 @@ const Home = () => {
                     </h1>
                 </div>
                 
-                {/* Search Input - Technical */}
-                <div className="w-full md:w-80">
+                {/* Search Input - Highlighted */}
+                <div className="w-full md:w-80 relative z-20">
                     <div className="relative group">
-                        <div className="absolute -top-3 left-0 text-[9px] font-mono text-neutral-400 uppercase tracking-widest group-focus-within:text-black transition-colors">Search_Query</div>
-                        <input 
-                            type="text" 
-                            placeholder="ENTER KEYWORD..." 
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-transparent border-b-2 border-black/10 py-2 pr-8 text-black font-mono text-sm placeholder-black/30 focus:outline-none focus:border-black transition-all uppercase"
-                        />
-                        <Search className="absolute right-0 bottom-2 h-4 w-4 text-black/30" />
+                         {/* Highlighted Label */}
+                        <div className="absolute -top-7 left-0 bg-black text-[#D9FF00] px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
+                            Search_Query
+                        </div>
+                        
+                        {/* Boxed Input */}
+                        <div className="relative bg-white border-2 border-black shadow-[4px_4px_0px_0px_#1a1a1a] transition-all group-focus-within:-translate-y-1 group-focus-within:shadow-[6px_6px_0px_0px_#1a1a1a]">
+                            <input 
+                                type="text" 
+                                placeholder="ENTER KEYWORD..." 
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-transparent py-3 px-4 pr-10 text-black font-mono text-sm font-bold placeholder-neutral-400 focus:outline-none uppercase"
+                            />
+                            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black" />
+                        </div>
                     </div>
                 </div>
             </div>
