@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import DeleteAccount from './pages/DeleteAccount';
 import MemoriesPP from './projects/Memories/PP';
 import MemoriesTC from './projects/Memories/TC';
+import MaxxedPP from './projects/Maxxed/PP';
+import MaxxedTC from './projects/Maxxed/TC';
 
 function App() {
   return (
@@ -15,6 +17,10 @@ function App() {
           {/* Memories Project Routes */}
           <Route path="/memories/privacy-policy" element={<MemoriesPP />} />
           <Route path="/memories/terms-conditions" element={<MemoriesTC />} />
+
+          {/* Maxxed Project Routes */}
+          <Route path="/maxxed/privacy-policy" element={<MaxxedPP />} />
+          <Route path="/maxxed/terms-conditions" element={<MaxxedTC />} />
         </Routes>
       </div>
     </Router>

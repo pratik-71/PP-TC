@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Trash2, Mail, User, AppWindow, AlertTriangle, Send } from 'lucide-react';
+import { Search, Shield, FileText, Component, Trash2, Grid, CornerRightDown, Share2, Info, ArrowLeft, Mail, User, AppWindow, AlertTriangle, Send } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const DeleteAccount = () => {
@@ -36,125 +36,177 @@ Email: ${formData.email}`;
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-gray-300 font-sans selection:bg-red-500/30 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#DCEEEF] text-[#1A1A1A] font-sans selection:bg-[#ccff00] selection:text-black overflow-hidden relative">
       
-      {/* Background */}
+      {/* 📐 Technical Background Grid */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
-          <div className="absolute top-[-20%] left-[-10%] h-[600px] w-[600px] rounded-full bg-red-900/10 blur-[100px] mix-blend-screen" />
-          <div className="absolute bottom-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-purple-900/10 blur-[100px] mix-blend-screen" />
+          {/* Dot Pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+          
+          {/* Crosshairs */}
+          <div className="absolute top-10 left-10 w-4 h-4 border-l border-t border-black/40" />
+          <div className="absolute top-10 right-10 w-4 h-4 border-r border-t border-black/40" />
+          <div className="absolute bottom-10 left-10 w-4 h-4 border-l border-b border-black/40" />
+          <div className="absolute bottom-10 right-10 w-4 h-4 border-r border-b border-black/40" />
+          
+           {/* Vertical Ruler Line */}
+           <div className="absolute left-[80px] top-0 bottom-0 w-px bg-black/5 hidden md:block"></div>
+          
+          {/* Neon Side Accent */}
+          <div className="absolute right-0 top-0 bottom-0 w-[8vw] bg-[#D9FF00] hidden lg:block border-l border-black/10"></div>
       </div>
 
-      {/* Compact Card */}
-      <div className="relative z-10 w-full max-w-lg bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      {/* 🧭 Navbar - Technical/Brutalist */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between border-b border-black/10 bg-[#DCEEEF]/90 backdrop-blur-sm">
+        <div className="flex items-center gap-6 pl-0 md:pl-20">
+             {/* Back Button */}
+             {/* Back Button */}
+            <button 
+                onClick={() => navigate('/')} 
+                className="flex items-center gap-2 px-3 py-1.5 bg-white border border-black/10 hover:bg-black hover:text-[#D9FF00] transition-all group"
+            >
+                 <ArrowLeft className="h-4 w-4" />
+                 <span className="text-xs font-bold uppercase tracking-wider">Return</span>
+            </button>
+            
+            <div className="flex items-center gap-3 group">
+                <div className="h-8 w-8 bg-black flex items-center justify-center text-[#ccff00] font-mono text-xs font-bold border border-black group-hover:bg-[#ccff00] group-hover:text-black transition-colors">
+                    ZN
+                </div>
+                <div>
+                   <span className="font-bold text-lg tracking-tighter uppercase block leading-none">Zenvy</span>
+                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">Console V2.1</span>
+                </div>
+            </div>
+        </div>
+      </nav>
+
+      {/* 🚀 Main Content - Fixed to fit screen */}
+      <main className="relative z-10 pt-20 px-6 h-screen flex flex-col max-w-7xl mx-auto md:pl-[100px] lg:pr-[10vw]">
         
-        {/* Header */}
-        <div className="bg-white/5 p-4 border-b border-white/5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-                <button 
-                    onClick={() => navigate('/')}
-                    className="p-2 -ml-2 rounded-full hover:bg-white/10 transition-colors"
-                >
-                    <ArrowLeft className="h-5 w-5 text-gray-400" />
-                </button>
-                <h1 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Trash2 className="h-4 w-4 text-red-500" />
-                    Delete Account
-                </h1>
-            </div>
-            <div className="px-2 py-1 rounded bg-red-500/10 border border-red-500/20 text-[10px] font-bold text-red-400 uppercase tracking-widest">
-                Action Required
+        {/* Header HUD - Compact */}
+        <div className="shrink-0 mb-8 relative">
+            <div className="absolute -left-6 top-2 w-3 h-3 bg-black/20 rounded-full" />
+            <div className="flex flex-col md:flex-row items-end justify-between gap-4 border-b border-black/10 pb-4">
+                <div>
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className="px-1.5 py-0.5 bg-red-600 text-white text-[10px] uppercase font-mono tracking-widest">Sys: Critical</span>
+                        <div className="h-px w-12 bg-black/20" />
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold text-black tracking-tighter uppercase leading-[0.9]">
+                        Delete Data
+                    </h1>
+                </div>
             </div>
         </div>
 
-        {/* Scrollable Form Area */}
-        <div className="p-6 overflow-y-auto custom-scrollbar">
-            <p className="text-sm text-gray-500 mb-6">
-                Complete this form to request permanent deletion of your account and associated data. This cannot be undone.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-                
-                {/* Project Select */}
-                <div>
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Project</label>
-                    <div className="relative">
-                        <AppWindow className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-                        <select 
-                            name="project"
-                            value={formData.project}
-                            onChange={handleChange}
-                            className="w-full bg-black/40 border border-white/10 rounded-lg py-2.5 pl-10 pr-3 text-sm text-white focus:border-red-500/50 focus:outline-none focus:ring-1 focus:ring-red-500/20 transition-all appearance-none"
-                        >
-                            <option value="Memories">Memories App</option>
-                        </select>
-                    </div>
+        {/* Content Area - Fits remaining height */}
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-8 min-h-0 pb-8">
+            
+            {/* Left Info Column */}
+            <div className="md:col-span-4 flex flex-col justify-center">
+                <div className="bg-[#DCEEEF] border border-black/10 p-6 relative group hover:border-black transition-all">
+                     <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-black opacity-20 group-hover:opacity-100 transition-opacity" />
+                     <h3 className="text-lg font-bold uppercase tracking-tighter mb-3">Protocol Details</h3>
+                     <p className="text-xs font-mono text-neutral-600 leading-relaxed mb-4">
+                        You are about to initiate a permanent data deletion sequence. This process is irreversible and will purge all records associated with the target project.
+                     </p>
+                     <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-red-600">
+                        <AlertTriangle className="h-4 w-4" />
+                        <span>Irreversible Action</span>
+                     </div>
                 </div>
+            </div>
 
-                {/* Email & Username Row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Email</label>
-                        <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-                            <input 
-                                type="email" 
-                                name="email"
-                                required
-                                value={formData.email}
+            {/* Right Form Column */}
+            <div className="md:col-span-8 flex flex-col justify-center">
+                 <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-[#DCEEEF] p-6 border border-black/10 relative">
+                     {/* Corner Accents */}
+                    <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-black opacity-20" />
+                    <div className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-black opacity-20" />
+                    
+                    <div className="space-y-5">
+                        {/* Project Select */}
+                        <div>
+                            <label className="text-[10px] font-mono font-bold text-neutral-500 uppercase tracking-widest mb-1.5 block">Target Project</label>
+                            <div className="relative group">
+                                <AppWindow className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black/40 group-focus-within:text-black transition-colors z-10" />
+                                <select 
+                                    name="project"
+                                    value={formData.project}
+                                    onChange={handleChange}
+                                    className="w-full bg-transparent border-b-2 border-black/10 py-2 pl-10 pr-8 text-base font-mono focus:outline-none focus:border-black transition-all appearance-none rounded-none cursor-pointer uppercase"
+                                >
+                                    <option value="Memories">Memories App</option>
+                                    <option value="Maxxed">Maxxed</option>
+                                </select>
+                                <CornerRightDown className="absolute right-0 bottom-3 h-3 w-3 text-black/20 pointer-events-none" />
+                            </div>
+                        </div>
+
+                        {/* Email & Username */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="text-[10px] font-mono font-bold text-neutral-500 uppercase tracking-widest mb-1.5 block">Email_ID</label>
+                                <div className="relative group">
+                                    <Mail className="absolute left-0 bottom-2.5 h-4 w-4 text-black/40" />
+                                    <input 
+                                        type="email" 
+                                        name="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        placeholder="USER@DOMAIN.COM"
+                                        className="w-full bg-transparent border-b-2 border-black/10 py-1.5 pl-6 text-black font-mono text-sm placeholder-black/30 focus:outline-none focus:border-black transition-all uppercase"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-mono font-bold text-neutral-500 uppercase tracking-widest mb-1.5 block">User_Handle</label>
+                                <div className="relative group">
+                                    <User className="absolute left-0 bottom-2.5 h-4 w-4 text-black/40" />
+                                    <input 
+                                        type="text" 
+                                        name="username"
+                                        required
+                                        value={formData.username}
+                                        onChange={handleChange}
+                                        placeholder="@HANDLE"
+                                        className="w-full bg-transparent border-b-2 border-black/10 py-1.5 pl-6 text-black font-mono text-sm placeholder-black/30 focus:outline-none focus:border-black transition-all uppercase"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Reason */}
+                        <div>
+                            <label className="text-[10px] font-mono font-bold text-neutral-500 uppercase tracking-widest mb-1.5 block">Reason_Log</label>
+                            <textarea 
+                                name="reason"
+                                value={formData.reason}
                                 onChange={handleChange}
-                                placeholder="name@email.com"
-                                className="w-full bg-black/40 border border-white/10 rounded-lg py-2.5 pl-10 pr-3 text-sm text-white placeholder-gray-700 focus:border-red-500/50 focus:outline-none focus:ring-1 focus:ring-red-500/20 transition-all"
+                                rows="3"
+                                placeholder="PROVIDE CONTEXT..."
+                                className="w-full bg-transparent border-b-2 border-black/10 py-1.5 text-black font-mono text-sm placeholder-black/30 focus:outline-none focus:border-black transition-all uppercase resize-none"
                             />
                         </div>
-                    </div>
-                    <div>
-                        <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Username</label>
-                        <div className="relative">
-                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-                            <input 
-                                type="text" 
-                                name="username"
-                                required
-                                value={formData.username}
-                                onChange={handleChange}
-                                placeholder="@username"
-                                className="w-full bg-black/40 border border-white/10 rounded-lg py-2.5 pl-10 pr-3 text-sm text-white placeholder-gray-700 focus:border-red-500/50 focus:outline-none focus:ring-1 focus:ring-red-500/20 transition-all"
-                            />
+
+                        <div className="pt-2">
+                             <button 
+                                type="submit"
+                                className="w-full md:w-auto group flex items-center justify-center gap-3 px-6 py-3 bg-red-600 text-white font-bold uppercase tracking-wider hover:bg-black hover:text-[#D9FF00] transition-all text-xs md:text-sm"
+                            >
+                                <Trash2 className="h-4 w-4" />
+                                <span>Execute Deletion</span>
+                            </button>
                         </div>
                     </div>
-                </div>
 
-                {/* Reason */}
-                <div>
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Reason (Optional)</label>
-                    <textarea 
-                        name="reason"
-                        value={formData.reason}
-                        onChange={handleChange}
-                        rows="3"
-                        placeholder="Briefly explain why..."
-                        className="w-full bg-black/40 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-gray-700 focus:border-red-500/50 focus:outline-none focus:ring-1 focus:ring-red-500/20 transition-all resize-none"
-                    />
-                </div>
-
-                {/* Warning Box */}
-                <div className="flex gap-3 p-3 bg-red-500/5 border border-red-500/10 rounded-lg">
-                    <AlertTriangle className="h-4 w-4 shrink-0 text-red-500 mt-0.5" />
-                    <p className="text-xs text-red-200/80 leading-relaxed">
-                        By submitting this request, you confirm that you want to permanently delete your account. This action is irreversible.
-                    </p>
-                </div>
-                
-                <button 
-                    type="submit"
-                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold py-3 rounded-lg shadow-lg shadow-red-500/20 transition-all active:scale-[0.98]"
-                >
-                    <Send className="h-4 w-4" />
-                    Send Deletion Request
-                </button>
-            </form>
+                 </form>
+            </div>
         </div>
-      </div>
+
+      </main>
     </div>
   );
 };

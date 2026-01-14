@@ -1,106 +1,117 @@
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Shield, Check, Info, FileText } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function TermsConditions() {
     const navigate = useNavigate();
 
     const Section = ({ title, children }) => (
-        <div className="mb-10">
-            <h2 className="text-xl font-semibold mb-4 text-white hover:text-blue-200 transition-colors">
+        <div className="mb-12 group">
+            <h2 className="text-xl font-bold uppercase tracking-tight text-black mb-6 flex items-center gap-3 group-hover:text-blue-600 transition-colors">
+                <span className="w-1.5 h-1.5 bg-black rounded-full group-hover:bg-blue-600 transition-colors"></span>
                 {title}
             </h2>
-            <div className="text-base leading-8 text-gray-400 font-light space-y-4">
+            <div className="text-sm font-mono leading-relaxed text-neutral-600 space-y-4 pl-4 border-l border-black/10 group-hover:border-blue-500/30 transition-colors">
                 {children}
             </div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-purple-500/30 relative">
+        <div className="min-h-screen bg-[#DCEEEF] text-[#1A1A1A] font-sans selection:bg-[#ccff00] selection:text-black overflow-hidden relative">
             
-            {/* Fixed Cosmos Background */}
+            {/* 📐 Technical Background Grid */}
             <div className="fixed inset-0 w-full h-full pointer-events-none z-0">
-                <div className="absolute top-[-20%] left-[-10%] h-[800px] w-[800px] rounded-full bg-purple-900/10 blur-[120px] mix-blend-screen" />
-                <div className="absolute bottom-[-20%] right-[-10%] h-[800px] w-[800px] rounded-full bg-indigo-900/10 blur-[120px] mix-blend-screen" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-blue-900/5 blur-[100px] mix-blend-screen" />
+                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+                <div className="absolute top-0 right-0 bottom-0 w-[5vw] bg-black/5 hidden xl:block border-l border-black/5"></div>
             </div>
 
-            {/* Main Content Container - No Fixed Headers */}
-            <div className="relative z-10 mx-auto max-w-3xl px-6 py-12">
+            {/* Main Content Container */}
+            <div className="relative z-10 mx-auto max-w-5xl px-6 py-12 md:pl-[100px] lg:pr-[15vw]">
                 
                 {/* Navigation */}
-                <div className="mb-12 flex items-center justify-between">
+                <div className="mb-16 flex items-center justify-between border-b border-black/10 pb-6">
                     <button 
                         onClick={() => navigate('/')}
-                        className="group flex items-center gap-2 rounded-full bg-white/5 pr-5 pl-4 py-2.5 hover:bg-white/10 transition-all border border-white/5 active:scale-95"
+                        className="group flex items-center gap-3 px-4 py-2 bg-white border border-black/10 hover:bg-black hover:text-[#D9FF00] transition-all"
                     >
-                        <ArrowLeft className="h-4 w-4 text-neutral-400 group-hover:text-white transition-colors" />
-                        <span className="text-sm font-medium text-neutral-400 group-hover:text-white transition-colors">Back</span>
+                        <ArrowLeft className="h-4 w-4" />
+                        <span className="text-xs font-bold uppercase tracking-wider">Return</span>
                     </button>
-                    <span className="text-sm font-medium text-neutral-600 tracking-widest uppercase">Memories App</span>
+                    <div className="flex flex-col items-end">
+                        <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Project ID</span>
+                        <span className="text-sm font-bold uppercase tracking-tight">Memories App</span>
+                    </div>
                 </div>
 
                 {/* Title Section */}
-                <div className="mb-16 border-b border-white/10 pb-8">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                <div className="mb-20">
+                    <div className="flex items-center gap-2 mb-4">
+                        <FileText className="h-4 w-4 text-black" />
+                        <span className="text-[10px] font-mono font-bold bg-[#D9FF00] px-1 py-0.5 text-black uppercase tracking-widest">Legal Document</span>
+                    </div>
+                    <h1 className="text-5xl md:text-6xl font-bold text-black tracking-tighter uppercase mb-2">
                         Terms & Conditions
                     </h1>
-                    <p className="text-blue-400 text-sm tracking-wide uppercase font-medium">
-                        Last Updated: January 13, 2026
+                    <p className="font-mono text-neutral-500 text-xs uppercase tracking-widest">
+                        Last Updated: August 24, 2024 // Revision 1.0
                     </p>
                 </div>
 
                 {/* Content */}
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
                     <Section title="1. Agreement to Terms">
-                        <p>By downloading, accessing, or using the Memories application, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use the application.</p>
+                        <p>
+                           These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and <strong>Memories</strong> ("we," "us" or "our"), concerning your access to and use of the Memories application. You agree that by accessing the Application, you have read, understood, and agree to be bound by all of these Terms and Conditions. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS AND CONDITIONS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE APPLICATION AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+                         </p>
                     </Section>
 
-                    <Section title="2. User Accounts">
-                        <p>To access certain features, you may need to register an account. You are responsible for maintaining the confidentiality of your account credentials (e.g., Google Sign-In) and are fully responsible for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+                    <Section title="2. Intellectual Property Rights">
+                        <p>
+                           Unless otherwise indicated, the Application is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Application (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.
+                        </p>
                     </Section>
 
-                    <Section title="3. User Content and Conduct">
-                        <div className="space-y-4">
-                            <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                                <span className="font-bold text-white block mb-2 text-sm uppercase tracking-wide opacity-80">Ownership</span>
-                                <span>You retain all rights to the photos, videos, and text ("Content") you upload. By uploading content, you grant Memories a license to store and display this content solely for the purpose of providing the service to you.</span>
-                            </div>
-                            <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                                <span className="font-bold text-white block mb-2 text-sm uppercase tracking-wide opacity-80">Prohibited Conduct</span>
-                                <span>You agree not to upload any content that is illegal, offensive, pornographic, violent, or violates the rights of others. We reserve the right to remove any content or terminate accounts that violate these guidelines.</span>
-                            </div>
-                        </div>
+                    <Section title="3. User Representations">
+                         <p className="mb-4">
+                           By using the Application, you represent and warrant that:
+                         </p>
+                         <ul className="space-y-3 list-none pl-0">
+                           <li className="flex items-start gap-3 p-3 bg-white/50 border border-black/5 hover:border-black/20 transition-all">
+                               <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                               <span>All registration information you submit will be true, accurate, current, and complete.</span>
+                           </li>
+                           <li className="flex items-start gap-3 p-3 bg-white/50 border border-black/5 hover:border-black/20 transition-all">
+                               <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                               <span>You will maintain the accuracy of such information and promptly update such registration information as necessary.</span>
+                           </li>
+                           <li className="flex items-start gap-3 p-3 bg-white/50 border border-black/5 hover:border-black/20 transition-all">
+                               <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                               <span>You have the legal capacity and you agree to comply with these Terms and Conditions.</span>
+                           </li>
+                           <li className="flex items-start gap-3 p-3 bg-white/50 border border-black/5 hover:border-black/20 transition-all">
+                               <Check className="h-4 w-4 text-green-600 mt-0.5" />
+                               <span>You are not a minor in the jurisdiction in which you reside.</span>
+                           </li>
+                         </ul>
                     </Section>
 
-                    <Section title="4. Subscriptions and Purchasing">
-                        <p>The app may offer auto-renewing subscriptions to access premium features. Subscription payments are charged to your App Store / Play Store account securely. Subscriptions automatically renew unless canceled at least 24 hours before the end of the current period. You can manage your subscriptions in your device account settings.</p>
+                    <Section title="4. Prohibited Activities">
+                        <p>
+                           You may not access or use the Application for any purpose other than that for which we make the Application available. The Application may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.
+                        </p>
                     </Section>
 
-                    <Section title="5. Intellectual Property">
-                        <p>The Memories app, including its design, code, graphics, and logos (excluding user-generated content), is the intellectual property of our company and is protected by copyright laws. You are granted a limited license to use the app for personal, non-commercial purposes.</p>
-                    </Section>
-
-                    <Section title="6. Disclaimer of Warranties">
-                        <p>The service is provided on an "as-is" and "as-available" basis. We do not warrant that the app will be error-free, uninterrupted, or perfectly secure, though we strive to maintain high standards of quality and security.</p>
-                    </Section>
-
-                    <Section title="7. Limitation of Liability">
-                        <p>To the fullest extent permitted by law, Memories and its creators shall not be liable for any indirect, incidental, or consequential damages arising arising from your use of the service or any loss of data.</p>
-                    </Section>
-
-                    <Section title="8. Changes to Terms">
-                        <p>We reserve the right to modify these terms at any time. We will notify you of any changes by posting the new Terms on this page. Your continued use of the app constitutes acceptance of the new terms.</p>
-                    </Section>
-
-                    <Section title="9. Contact Information">
-                        <p>For any questions regarding these Terms, please contact us at <a href="mailto:support@venturememories.com" className="text-white underline hover:no-underline underline-offset-4 decoration-neutral-600">support@venturememories.com</a>.</p>
+                    <Section title="5. Contact Us">
+                        <p>
+                           In order to resolve a complaint regarding the Application or to receive further information regarding use of the Application, please contact us at: <a href="mailto:pratikdabhade66344@gmail.com" className="text-black font-bold hover:text-blue-600 underline underline-offset-4 decoration-black/20 hover:decoration-blue-600">pratikdabhade66344@gmail.com</a>
+                        </p>
                     </Section>
                 </div>
 
-                <div className="mt-20 border-t border-white/10 pt-10 text-center">
-                   <p className="text-xs text-neutral-600 uppercase tracking-widest">© 2026 Memories Inc. All rights reserved.</p>
+                <div className="mt-24 border-t border-black/10 pt-10 text-center md:text-left flex flex-col md:flex-row justify-between items-center opacity-50 hover:opacity-100 transition-opacity">
+                   <p className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest">© 2026 Memories Inc. All rights reserved.</p>
+                   <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">End of Document</p>
                 </div>
             </div>
         </div>
